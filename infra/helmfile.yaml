@@ -1,0 +1,19 @@
+helmDefaults:
+  wait: true
+  timeout: 720
+  createNamespace: false
+  atomic: true
+
+environments:
+  stage:
+  preprod:
+  production:
+
+releases:
+- name: yc-product-service-{{ .Environment.Name }}
+  chart: ./yc-product-service
+  namespace: yaraconnect-global-{{ .Environment.Name }}
+  values:
+    - yc-product-service/{{ .Environment.Name }}.yaml
+    - image:
+        tag: {{ requiredEnv "IMAGE_TAG" | quote }}
