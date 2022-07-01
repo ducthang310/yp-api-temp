@@ -1,0 +1,27 @@
+{{- if .Values.hpa.enabled -}}
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "yc-product-service.fullname" . }}
+  labels:
+{{ include "yc-product-service.labels" . | indent 4 }}
+  {{- range $key, $val := .Values.labels }}
+    {{ $key }}: {{ $val }}
+  {{- end}}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "yc-product-service.fullname" . }}
+  minReplicas: {{ default "1" .Values.hpa.minReplicas }}
+  maxReplicas: {{ default "1" .Values.hpa.maxReplicas }}
+  metrics:
+  {{- with .Values.hpa.metrics }}
+  {{- toYaml . | trim | nindent 2 }}
+  {{ else }}
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  {{- end }}
+{{- end }}

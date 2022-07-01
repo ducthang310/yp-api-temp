@@ -1,0 +1,9 @@
+node_modules
+build
+.env*
+coverage
+.idea
+.DS_Store
+.vscode/
+.history/
+yarn-error.log
