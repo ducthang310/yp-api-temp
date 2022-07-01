@@ -184,9 +184,9 @@ workflows:
             - CIRCLE_CI_AWS_IAM_APAC_EKS_STAGE
             - CONTRAST_API
           env: stage
-          CONTRAST__SERVER__NAME: "YC-Marketplace-BE-in"
+          CONTRAST__SERVER__NAME: "YC-Product-service"
           CONTRAST__SERVER__ENVIRONMENT: "STAGE"
-          CONTRAST__APPLICATION__NAME: "YC-Marketplace-Service"
+          CONTRAST__APPLICATION__NAME: "YC-Product-service"
           HELMFILE_LOCATION: /home/app/infra/helmfile.yaml
           HELMFILE_PATH: /home/circleci/repo/infra/
           HELMFILE_PATH_APP: /home/app/infra/
@@ -216,9 +216,9 @@ workflows:
             - CIRCLE_CI_AWS_IAM_APAC_EKS_PRODUCTION
             - CONTRAST_API
           env: preprod
-          CONTRAST__SERVER__NAME: "YC-Marketplace-BE-in"
-          CONTRAST__SERVER__ENVIRONMENT: "PREPROD"
-          CONTRAST__APPLICATION__NAME: "YC-Marketplace-Service"
+          CONTRAST__SERVER__NAME: "YC-Product-service"
+          CONTRAST__SERVER__ENVIRONMENT: "STAGE"
+          CONTRAST__APPLICATION__NAME: "YC-Product-service"
           HELMFILE_LOCATION: /home/app/infra/helmfile.yaml
           HELMFILE_PATH: /home/circleci/repo/infra/
           HELMFILE_PATH_APP: /home/app/infra/
@@ -248,9 +248,9 @@ workflows:
             - CIRCLE_CI_AWS_IAM_APAC_EKS_PRODUCTION
             - CONTRAST_API
           env: production
-          CONTRAST__SERVER__NAME: "YC-Marketplace-BE-in"
-          CONTRAST__SERVER__ENVIRONMENT: "PRODUCTION"
-          CONTRAST__APPLICATION__NAME: "YC-Marketplace-Service"
+          CONTRAST__SERVER__NAME: "YC-Product-service"
+          CONTRAST__SERVER__ENVIRONMENT: "STAGE"
+          CONTRAST__APPLICATION__NAME: "YC-Product-service"
           HELMFILE_LOCATION: /home/app/infra/helmfile.yaml
           HELMFILE_PATH: /home/circleci/repo/infra/
           HELMFILE_PATH_APP: /home/app/infra/
